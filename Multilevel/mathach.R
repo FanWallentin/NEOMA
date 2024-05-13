@@ -2,7 +2,8 @@
 
 library(lme4)
 
-mathach <- read.csv("~/Downloads/NEOMA-LISREL/Multilevel/mathach.csv",header = T)
+urlfile="https://raw.github.com/FanWallentin/NEOMA/main/Multilevel/mathach.csv"
+mathach <- read.csv(urlfile,header = T)
 mathach <- mathach[,1:6]
 
 # Model 1: Intercept-Only Model

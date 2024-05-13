@@ -1,8 +1,8 @@
 ### Math on Reading with Career-Revisited
 
 library(lme4)
-
-mathread <- read.csv("~/Downloads/NEOMA-LISREL/Multilevel/Math on Reading by Career.csv",header = T)
+urlfile="https://raw.github.com/FanWallentin/NEOMA/main/Multilevel/Math_on_Reading_by_Career.csv"
+mathread <- read.csv(urlfile,header = T)
 mathread <- mathread[,1:4]
 
 ## Simple linear model for overall
@@ -17,7 +17,7 @@ for (i in 1:length(level)){
   model_i <- lm(Math ~ 1 + Reading, data = mathread[mathread$Career==i,])
   output[[i]] <- summary(model_i)
 }
-
+output
 ## Multiple level model
 model <- lmer(Math ~ 1 + Reading +(1 + Reading| Career), data = mathread,REML=F,
                     control = lmerControl(optimizer = "bobyqa"))
