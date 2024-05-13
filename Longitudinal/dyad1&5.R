@@ -1,5 +1,6 @@
+
 library(lavaan)
-urlfile="https://raw.github.com/FanWallentin/SEM-RCode/main/Examples-note7-Rcode/DYAD.csv"
+urlfile="https://raw.github.com/FanWallentin/NEOMA/main/Longitudinal/DYAD.csv"
 dyad = read.csv(urlfile)
 dyad = dyad[,c(1:10)]
 dyad[dyad==-9] = NA

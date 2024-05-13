@@ -5,7 +5,8 @@ library(tidyverse)
 library(semPlot)
 
 ## input data
-psavar <- read.csv("~/Downloads/NEOMA-LISREL/Longitudinal/psavar.csv",header = T)
+urlfile="https://raw.github.com/FanWallentin/NEOMA/main/Longitudinal/psavar.csv"
+psavar <- read.csv(urlfile,header = T)
 psavar <- psavar[,1:6]
 
 psavar[psavar==-9] = NA ## missing value
@@ -33,7 +34,6 @@ fit1 <- growth(model_1a, data=psavar,missing="FIML",
 
 summary(fit1,standardized=TRUE,rsquare=T,fit.measures=TRUE)
 
-parameterEstimates.mi(aaa)
 ######## Model 2: Linear Growth Curve with Covariate for psavar Data
 
 model_2a <- '
