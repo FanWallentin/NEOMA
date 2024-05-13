@@ -1,5 +1,6 @@
 ####Latent Curve Models
 
+
 library(lavaan)
 library(tidyverse)
 library(semPlot)

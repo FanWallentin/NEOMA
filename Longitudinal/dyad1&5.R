@@ -1,4 +1,5 @@
 
+
 library(lavaan)
 urlfile="https://raw.github.com/FanWallentin/NEOMA/main/Longitudinal/DYAD.csv"
 dyad = read.csv(urlfile)
