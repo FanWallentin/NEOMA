@@ -5,7 +5,8 @@ library(tidyverse)
 library(semPlot)
 
 ## input data
-hump <- read.table("~/Downloads/NEOMA-LISREL/Longitudinal/humphreys.txt",header = T)
+urlfile="https://raw.github.com/FanWallentin/NEOMA/main/Longitudinal/humphreys.txt"
+hump <- read.table(urlfile,header = T)
 
 ### Model 1:  humphreys1b.lis       
 
@@ -44,14 +45,6 @@ model_1b <- '
 
 GPA_1b <- cfa(model_1b, data = hump,likelihood = "wishart")
 summary(GPA_1b, fit.measures=TRUE, rsquare=T,standardized=T)
-
-
-## Path diagrams
-semPaths(GPA_1b, whatLabels = "est",
-         sizeMan = 8, edge.label.cex = 0.75,
-         style = "ram",sizeMan2 = 4,sizeLat = 4,
-         nCharNodes = 0, nCharEdges = 0,
-         layout = "tree",rotation = 2)
 
 
 ### Model 2:  humphreys2b.lis
