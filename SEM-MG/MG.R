@@ -4,9 +4,11 @@ library(lavaan)
 library(tidyverse)
 library(semPlot)
 
+urlfile_1="https://raw.github.com/FanWallentin/NEOMA/main/SEM-MG/BUYER.csv"
+urlfile_2="https://raw.github.com/FanWallentin/NEOMA/main/SEM-MG/SELLER.csv"
 
-buyer <- read.csv("~/Downloads/NEOMA-LISREL/SEM-MG/BUYER.csv")
-seller <- read.csv("~/Downloads/NEOMA-LISREL/SEM-MG/SELLER.csv")
+buyer <- read.csv(urlfile_1)
+seller <- read.csv(urlfile_2)
 buyer <- buyer[,1:15]
 seller <- seller[,1:15]
 
@@ -34,12 +36,10 @@ summary(buyer1, fit.measures=TRUE, rsquare=T,standardized=T)
 seller1 <- cfa(model_1, data = seller,likelihood = "wishart", estimator = "MLR")
 summary(seller1, fit.measures=TRUE, rsquare=T,standardized=T)
 
-a = cbind(buyer,1)
-b = cbind(seller,0)
-class(a)
-names(a)[16] <- "factor"
-names(b)[16] <- names(a)[16]  <-  "factor"
-group <- rbind(a,b)
+buyer = cbind(buyer,1)
+seller = cbind(seller,0)
+names(seller)[16] <- names(buyer)[16]  <-  "factor"
+group <- rbind(buyer,seller)
 
 ### Two groups
 
