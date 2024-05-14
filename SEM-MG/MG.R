@@ -38,12 +38,12 @@ summary(seller1, fit.measures=TRUE, rsquare=T,standardized=T)
 
 buyer = cbind(buyer,1)
 seller = cbind(seller,0)
-names(seller)[16] <- names(buyer)[16]  <-  "factor"
+names(seller)[16] <- names(buyer)[16]  <-  "id"
 group <- rbind(buyer,seller)
 
 ### Two groups
 
-G1 <- cfa(model_1, data = group,group = "factor",likelihood = "wishart",
+G1 <- cfa(model_1, data = group,group = "id",likelihood = "wishart",
               estimator = "WLSMV", meanstructure = F, std.lv=T,ordered=T,
           group.equal = c("loadings","lv.covariances"))
 summary(G1, fit.measures=TRUE, rsquare=T,standardized=T)
