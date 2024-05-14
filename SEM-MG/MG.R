@@ -30,10 +30,10 @@ model_1 <- '
             
 '
 
-buyer1 <- cfa(model_1, data = buyer,likelihood = "wishart", estimator = "MLR")
+buyer1 <- cfa(model_1, data = buyer,likelihood = "wishart", estimator = "WLSMV")
 summary(buyer1, fit.measures=TRUE, rsquare=T,standardized=T)
 
-seller1 <- cfa(model_1, data = seller,likelihood = "wishart", estimator = "MLR")
+seller1 <- cfa(model_1, data = seller,likelihood = "wishart", estimator = "WLSMV")
 summary(seller1, fit.measures=TRUE, rsquare=T,standardized=T)
 
 buyer = cbind(buyer,1)
@@ -44,15 +44,15 @@ group <- rbind(buyer,seller)
 ### Two groups
 
 G1 <- cfa(model_1, data = group,group = "factor",likelihood = "wishart",
-              estimator = "MLR", meanstructure = F)
-summary(buyer1, fit.measures=TRUE, rsquare=T,standardized=T)
-
+              estimator = "WLSMV", meanstructure = F, std.lv=T,ordered=T,
+          group.equal = c("loadings"))
+summary(G1, fit.measures=TRUE, rsquare=T,standardized=T)
+#standardizedSolution(G1)[91:236,
 
 ## G2
 model_2 <- ' 
 
   #### "=~" : measurement model
-  group: 1
 
             goals =~ q1 + q2 + q3
             coord =~ q28 + q29
@@ -65,21 +65,15 @@ model_2 <- '
             flex ~ goals + uncert
             perform ~ coord + flex
   
-  group: 2
-  
-            goals =~ q1 + q2 + q3
-            coord =~ q28 + q29
-            flex =~ q33 + q34
-            uncert =~ q39 + q40
-            perform =~ q44 + q47 + q48
+
 
             
 '
 
 G2 <- cfa(model_2, data = group,group = "factor",likelihood = "wishart",
-          estimator = "MLR", meanstructure = F)
+          estimator = "WLSMV", meanstructure = F)
 summary(G2, fit.measures=TRUE, rsquare=T,standardized=T)
-
+standardizedSolution(G1)
 
 
 
