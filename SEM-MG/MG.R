@@ -50,23 +50,6 @@ summary(MG1, fit.measures=TRUE, rsquare=T,standardized=T)
 #standardizedSolution(G1)[91:236,
 
 ## G2
-model_2 <- ' 
-
-  #### "=~" : measurement model
-
-            goals =~ q1 + q2 + q3
-            coord =~ q28 + q29
-            flex =~ q33 + q34
-            uncert =~ q39 + q40
-            perform =~ q44 + q47 + q48
-          
-   ### Regression
-            coord ~ goals + uncert
-            flex ~ goals + uncert
-            perform ~ coord + flex
-  
-            
-'
 
 MG2 <- cfa(model_1, data = group,group = "Id",likelihood = "wishart",
           estimator = "WLSMV", meanstructure = F, std.lv=T,ordered=T,
