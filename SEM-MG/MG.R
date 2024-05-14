@@ -47,7 +47,7 @@ MG1 <- cfa(model_1, data = group,group = "Id",likelihood = "wishart",
               estimator = "WLSMV", meanstructure = F, std.lv=T,ordered=T,
           group.equal = c("loadings","lv.covariances"))
 summary(MG1, fit.measures=TRUE, rsquare=T,standardized=T)
-#standardizedSolution(G1)[91:236,
+#standardizedSolution(MG1)
 
 ## G2
 
@@ -55,7 +55,7 @@ MG2 <- cfa(model_1, data = group,group = "Id",likelihood = "wishart",
           estimator = "WLSMV", meanstructure = F, std.lv=T,ordered=T,
           group.equal = c("loadings","lv.covariances","regressions"))
 summary(MG2, fit.measures=TRUE, rsquare=T,standardized=T)
-#standardizedSolution(G1)
+#standardizedSolution(MG2)
 
 
 
