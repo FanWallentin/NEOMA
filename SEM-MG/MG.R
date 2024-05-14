@@ -43,10 +43,10 @@ group <- rbind(buyer,seller)
 
 ### Two groups
 
-G1 <- cfa(model_1, data = group,group = "Id",likelihood = "wishart",
+MG1 <- cfa(model_1, data = group,group = "Id",likelihood = "wishart",
               estimator = "WLSMV", meanstructure = F, std.lv=T,ordered=T,
           group.equal = c("loadings","lv.covariances"))
-summary(G1, fit.measures=TRUE, rsquare=T,standardized=T)
+summary(MG1, fit.measures=TRUE, rsquare=T,standardized=T)
 #standardizedSolution(G1)[91:236,
 
 ## G2
@@ -65,15 +65,14 @@ model_2 <- '
             flex ~ goals + uncert
             perform ~ coord + flex
   
-
-
             
 '
 
-G2 <- cfa(model_2, data = group,group = "factor",likelihood = "wishart",
-          estimator = "WLSMV", meanstructure = F)
-summary(G2, fit.measures=TRUE, rsquare=T,standardized=T)
-standardizedSolution(G1)
+MG2 <- cfa(model_1, data = group,group = "Id",likelihood = "wishart",
+          estimator = "WLSMV", meanstructure = F, std.lv=T,ordered=T,
+          group.equal = c("loadings","lv.covariances","regressions"))
+summary(MG2, fit.measures=TRUE, rsquare=T,standardized=T)
+#standardizedSolution(G1)
 
 
 
