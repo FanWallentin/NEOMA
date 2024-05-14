@@ -30,10 +30,10 @@ model_1 <- '
             
 '
 
-buyer1 <- cfa(model_1, data = buyer,likelihood = "wishart", estimator = "WLSMV")
+buyer1 <- cfa(model_1, data = buyer,likelihood = "wishart", estimator = "WLSMV",ordered = T))
 summary(buyer1, fit.measures=TRUE, rsquare=T,standardized=T)
 
-seller1 <- cfa(model_1, data = seller,likelihood = "wishart", estimator = "WLSMV")
+seller1 <- cfa(model_1, data = seller,likelihood = "wishart", estimator = "WLSMV",ordered = T))
 summary(seller1, fit.measures=TRUE, rsquare=T,standardized=T)
 
 buyer = cbind(buyer,1)
