@@ -26,10 +26,7 @@ model_1 <- '
 '
 
 buyer1 <- cfa(model_1, data = buyer, std.lv=T,
-              likelihood = "wishart", estimator = "MLR")
-
-#buyer1 <- cfa(model_1, data = buyer, std.lv=T,
-#              likelihood = "wishart", estimator = "WLSMV",ordered = T)
+              likelihood = "wishart", estimator = "WLSMV",ordered = T)
 
 summary(buyer1, fit.measures=TRUE, rsquare=T,standardized=T)
 standardizedSolution(buyer1)
