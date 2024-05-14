@@ -45,7 +45,7 @@ group <- rbind(buyer,seller)
 
 G1 <- cfa(model_1, data = group,group = "factor",likelihood = "wishart",
               estimator = "WLSMV", meanstructure = F, std.lv=T,ordered=T,
-          group.equal = c("loadings"))
+          group.equal = c("loadings","lv.covariances"))
 summary(G1, fit.measures=TRUE, rsquare=T,standardized=T)
 #standardizedSolution(G1)[91:236,
 
